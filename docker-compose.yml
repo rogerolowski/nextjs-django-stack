@@ -12,6 +12,7 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - REDIS_HOST=redis
+      - GITPOD_WORKSPACE_URL=${GITPOD_WORKSPACE_URL}
     ports:
       - "8000:8000"
     depends_on:

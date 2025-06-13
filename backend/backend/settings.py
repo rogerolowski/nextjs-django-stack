@@ -1,11 +1,20 @@
 import os
 from pathlib import Path
 
+# Get Gitpod hostname from environment if available
+GITPOD_WORKSPACE_URL = os.environ.get("GITPOD_WORKSPACE_URL")
+if GITPOD_WORKSPACE_URL:
+    GITPOD_HOST = GITPOD_WORKSPACE_URL.replace("https://", "")
+    CSRF_TRUSTED_ORIGINS = [f"https://{GITPOD_HOST}"]
+    ALLOWED_HOSTS = [GITPOD_HOST]
+else:
+    CSRF_TRUSTED_ORIGINS = ["http://localhost:8000"]
+    ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-please-change-this'
 DEBUG = True
-ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
