@@ -1,0 +1,15 @@
+image:
+  file: .gitpod.Dockerfile
+
+tasks:
+  - name: Start Fullstack App
+    init: docker-compose up --build -d
+    command: |
+      echo "🌐 Frontend: http://localhost:3000"
+      echo "🎯 Backend: http://localhost:8000"
+
+ports:
+  - port: 3000
+    onOpen: open-preview
+  - port: 8000
+    onOpen: open-preview
