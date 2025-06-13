@@ -9,7 +9,7 @@ This project is a fullstack setup using:
 
 🚀 **One-click Gitpod Launch**:
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/YOUR_USERNAME/YOUR_REPO_NAME)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/rogerolowski/nextjs-django-stack)
 
 ---
 
