@@ -2,6 +2,7 @@ import os
 from pathlib import Path
 
 # Get Gitpod hostname from environment if available
+import socket
 GITPOD_WORKSPACE_URL = os.environ.get("GITPOD_WORKSPACE_URL")
 if GITPOD_WORKSPACE_URL:
     GITPOD_HOST = GITPOD_WORKSPACE_URL.replace("https://", "")
@@ -10,6 +11,16 @@ if GITPOD_WORKSPACE_URL:
 else:
     CSRF_TRUSTED_ORIGINS = ["http://localhost:8000"]
     ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+
+# Django Debug Toolbar: set INTERNAL_IPS for Docker
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
+try:
+    hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
+    INTERNAL_IPS += [ip[:-1] + "1" for ip in ips]
+except Exception:
+    pass
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -27,9 +38,11 @@ INSTALLED_APPS = [
     'django_filters',
     'axes',
     'core',
+    'debug_toolbar',  # Added for Django Debug Toolbar
 ]
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',  # Django Debug Toolbar
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
