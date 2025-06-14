@@ -18,7 +18,13 @@ ports:
 tasks:
   - name: Start Docker Compose
     init: |
-      echo "🔧 Building containers..."
+      echo "📦 Installing Python deps..."
+      cd backend && poetry install
+
+      echo "📦 Installing frontend deps..."
+      cd ../frontend && pnpm install
+
+      echo "🐳 Building containers..."
       docker-compose build
     command: |
       echo "🚀 Starting services..."
@@ -36,13 +42,16 @@ vscode:
 
 github:
   prebuilds:
-    master: true
-    branches: true
-    pullRequests: true
-    pullRequestsFromForks: true
     addBadge: true
-    addComment: true
-    addCheck: true
+    runOnPush: true
+    runOnPullRequest: true
+
+# Cache poetry/pnpm
+cache:
+  paths:
+    - ~/.cache/pypoetry
+    - ~/.cache/pnpm
+    - ~/.local/share/pypoetry
 
 # Optionally, add environment variables if needed
 # env:
