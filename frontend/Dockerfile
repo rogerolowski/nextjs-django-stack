@@ -22,3 +22,4 @@ EXPOSE 3000
 
 # Start in dev mode
 CMD ["pnpm", "dev"]
+
