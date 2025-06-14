@@ -1,20 +1,26 @@
 [tool.poetry]
 name = "backend"
 version = "0.1.0"
-description = "Django backend for Next.js stack"
-authors = ["Your Name <your@email.com>"]
+description = "Django backend for fullstack app"
+authors = ["Your Name <you@example.com>"]
+license = "MIT"
+readme = "README.md"
+# Disable package mode since this is an app, not a library
+packages = []
 
 [tool.poetry.dependencies]
-python = ">=3.11,<3.12"
-Django = ">=4.2"
-djangorestframework = "*"
-django-filter = "*"
-django-axes = "*"
-django-redis = "*"
-python-dotenv = "*"
-django-debug-toolbar = ">=4.3.0"
-psycopg2-binary = "*"
+python = "^3.10"
+Django = "^5.0"
+djangorestframework = "^3.14.0"
+psycopg2-binary = "^2.9.9"
+python-decouple = "^3.8"
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.3.0"
+isort = "^5.13.2"
+flake8 = "^7.0.0"
+django-debug-toolbar = "^4.2.0"
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
+requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"

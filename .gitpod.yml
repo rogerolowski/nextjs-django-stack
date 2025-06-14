@@ -18,8 +18,8 @@ ports:
 tasks:
   - name: Start Docker Compose
     init: |
-      echo "📦 Installing Python deps..."
-      cd backend && poetry install
+      echo "📦 Installing backend deps..."
+      cd backend && poetry install --no-root
 
       echo "📦 Installing frontend deps..."
       cd ../frontend && pnpm install
