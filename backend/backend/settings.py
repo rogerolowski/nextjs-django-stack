@@ -3,16 +3,20 @@ from pathlib import Path
 from datetime import timedelta
 from decouple import config
 
-# Get Gitpod hostname from environment if available
-import socket
+# Set ALLOWED_HOSTS for local and Gitpod environments
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    os.environ.get("GITPOD_HOST", "")
+]
+
+# Optionally set CSRF_TRUSTED_ORIGINS for Gitpod
 GITPOD_WORKSPACE_URL = os.environ.get("GITPOD_WORKSPACE_URL")
 if GITPOD_WORKSPACE_URL:
     GITPOD_HOST = GITPOD_WORKSPACE_URL.replace("https://", "")
     CSRF_TRUSTED_ORIGINS = [f"https://{GITPOD_HOST}"]
-    ALLOWED_HOSTS = [GITPOD_HOST]
 else:
     CSRF_TRUSTED_ORIGINS = ["http://localhost:8000"]
-    ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 
 # Django Debug Toolbar: set INTERNAL_IPS for Docker
 INTERNAL_IPS = [
@@ -32,8 +36,6 @@ SECRET_KEY = config('DJANGO_SECRET_KEY', default='your-secret-key-here')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
-
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost,127.0.0.1').split(',')
 
 # Application definition
 AUTHENTICATION_BACKENDS = [
