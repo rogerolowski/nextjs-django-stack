@@ -5,9 +5,16 @@ ENV PYTHONUNBUFFERED=1
 
 WORKDIR /app
 
-COPY requirements.txt .
-RUN pip install -r requirements.txt
+# Install Poetry
+RUN pip install poetry
 
+# Copy only dependency files first for better caching
+COPY pyproject.toml poetry.lock* ./
+
+RUN poetry config virtualenvs.create false \
+  && poetry install --no-interaction --no-ansi
+
+# Copy the rest of the code
 COPY . .
 
 EXPOSE 8000
