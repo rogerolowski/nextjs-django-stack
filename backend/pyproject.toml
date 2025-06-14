@@ -2,7 +2,7 @@
 name = "backend"
 version = "0.1.0"
 description = "Django backend for fullstack app"
-authors = ["Your Name <you@example.com>"]
+authors = ["rog olo<rogerolowski@gmail.com>"]
 license = "MIT"
 package-mode = false  # disables package mode for apps
 # Disable package mode since this is an app, not a library
@@ -14,6 +14,7 @@ Django = "^5.0"
 djangorestframework = "^3.14.0"
 psycopg2-binary = "^2.9.9"
 python-decouple = "^3.8"
+django-filter = "^24.2"
 
 [tool.poetry.group.dev.dependencies]
 black = "^24.3.0"
