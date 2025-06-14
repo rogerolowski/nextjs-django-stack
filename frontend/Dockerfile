@@ -2,10 +2,14 @@ FROM node:20
 
 WORKDIR /app
 
+RUN corepack enable && corepack prepare pnpm@latest --activate
+
 COPY package*.json ./
 
-RUN npm install
+RUN pnpm install
 
 COPY . .
 
-CMD ["npm", "run", "dev"]
+EXPOSE 3000
+
+CMD ["pnpm", "dev"]
