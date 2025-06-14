@@ -1,6 +1,5 @@
 image:
-  # Use a custom Dockerfile if you need extra tools, or comment out for default
-  # file: .gitpod.Dockerfile
+  file: .gitpod.Dockerfile
 
 ports:
   - port: 3000
