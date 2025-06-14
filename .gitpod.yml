@@ -1,13 +1,51 @@
 image:
-  file: .gitpod.Dockerfile
-
-tasks:
-  - name: Start Docker Services
-    init: docker compose build
-    command: docker compose up
+  # Use a custom Dockerfile if you need extra tools, or comment out for default
+  # file: .gitpod.Dockerfile
 
 ports:
-  - port: 8000
-    onOpen: open-preview
   - port: 3000
-    onOpen: open-browser
+    onOpen: open-preview
+    visibility: public
+  - port: 8000
+    onOpen: notify
+    visibility: public
+  - port: 5432
+    onOpen: ignore
+    visibility: private
+  - port: 6379
+    onOpen: ignore
+    visibility: private
+
+tasks:
+  - name: Start Docker Compose
+    init: |
+      echo "🔧 Building containers..."
+      docker-compose build
+    command: |
+      echo "🚀 Starting services..."
+      docker-compose up -d
+      echo "✅ All services started."
+      bash
+
+vscode:
+  extensions:
+    - ms-python.python
+    - ms-azuretools.vscode-docker
+    - msjsdiag.vscode-react-native
+    - esbenp.prettier-vscode
+    - dbaeumer.vscode-eslint
+
+github:
+  prebuilds:
+    master: true
+    branches: true
+    pullRequests: true
+    pullRequestsFromForks: true
+    addBadge: true
+    addComment: true
+    addCheck: true
+
+# Optionally, add environment variables if needed
+# env:
+#   - name: GITPOD_WORKSPACE_URL
+#     value: ${GITPOD_WORKSPACE_URL}
