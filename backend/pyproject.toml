@@ -4,7 +4,6 @@ version = "0.1.0"
 description = "Django backend for fullstack app"
 authors = ["Your Name <you@example.com>"]
 license = "MIT"
-readme = "README.md"
 # Disable package mode since this is an app, not a library
 packages = []
 
