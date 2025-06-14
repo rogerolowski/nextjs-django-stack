@@ -18,7 +18,7 @@
     "@shadcn/ui": "^0.0.4",
     "clsx": "^2.1.0",
     "lucide-react": "^0.270.0",
-    "@welldone-software/why-did-you-render": "^1.0.1"
+    "@welldone-software/why-did-you-render": "^10.0.1"
   },
   "devDependencies": {
     "typescript": "^5.4.5",
