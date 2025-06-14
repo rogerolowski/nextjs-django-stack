@@ -1,13 +1,10 @@
 __pycache__/
-*.pyc
 *.pyo
 *.pyd
 .env
 .env.*
 *.sqlite3
-*.log
-.mypy_cache/
-.poetry/
+*.ly/
 venv/
 .idea/
 .vscode/

@@ -1,0 +1,19 @@
+# .dockerignore
+.git
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+*.log
+.env
+.env.*
+node_modules/
+build/
+dist/
+frontend/.next/
+frontend/node_modules/
+backend/staticfiles/
+.DS_Store
+docker-compose*.yml

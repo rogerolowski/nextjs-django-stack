@@ -1,0 +1,28 @@
+# .gitignore
+# Python
+__pycache__/
+*.py[cod]
+*.sqlite3
+*.db
+*.log
+.env
+.env.*
+*.pot
+*.pyc
+
+# Node/Next.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+frontend/.next/
+frontend/node_modules/
+build/
+dist/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+*.pid
