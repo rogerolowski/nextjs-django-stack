@@ -1,5 +1,5 @@
 import React from "react";
-import './globals.css';
+import '../styles/globals.css';
 import WhyDidYouRenderSetup from './WhyDidYouRenderSetup';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
