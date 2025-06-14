@@ -46,13 +46,6 @@ github:
     runOnPush: true
     runOnPullRequest: true
 
-# Cache poetry/pnpm
-cache:
-  paths:
-    - ~/.cache/pypoetry
-    - ~/.cache/pnpm
-    - ~/.local/share/pypoetry
-
 # Optionally, add environment variables if needed
 # env:
 #   - name: GITPOD_WORKSPACE_URL
