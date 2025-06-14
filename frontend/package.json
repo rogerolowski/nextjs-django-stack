@@ -22,7 +22,7 @@
     "typescript": "^5.4.5",
     "@types/react": "^18.2.62",
     "@types/node": "^20.11.30",
-    "eslint": "^8.58.0",
+    "eslint": "^8.57.1",
     "eslint-config-next": "^14.2.3",
     "prettier": "^3.2.5",
     "eslint-plugin-prettier": "^5.1.3",
