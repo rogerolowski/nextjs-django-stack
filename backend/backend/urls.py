@@ -12,7 +12,13 @@ from drf_spectacular.views import (
 def root_view(request):
     return JsonResponse({"message": "Django backend is running!"})
 
+def health_check(request):
+    from django.http import HttpResponse
+    return HttpResponse("OK", status=200)
+
 urlpatterns = [
+    path('health/', health_check),  # Health check endpoint
+    path('health', health_check),   # Health check endpoint (no slash)
     path('', root_view),  # Root health check
     path('test-json/', lambda request: JsonResponse({"test": True})),  # JSON response test
     path('admin/', admin.site.urls),
