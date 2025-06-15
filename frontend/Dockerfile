@@ -11,3 +11,6 @@ ENV PNPM_STORE_PATH=/workspace/.pnpm-store
 # Copy lockfile and package.json first to cache layers
 COPY package.json pnpm-lock.yaml ./
 
+# Install all dependencies (including @tanstack/react-query)
+RUN pnpm install
+

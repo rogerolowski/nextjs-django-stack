@@ -10,6 +10,15 @@ const nextConfig = {
       },
     ];
   },
-}
+};
+
+const path = require('path');
+
+nextConfig.webpack = (config) => {
+  config.resolve = config.resolve || {};
+  config.resolve.alias = config.resolve.alias || {};
+  config.resolve.alias['@'] = path.resolve(__dirname, 'app');
+  return config;
+};
 
 module.exports = nextConfig;

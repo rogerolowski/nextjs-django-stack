@@ -18,6 +18,10 @@ ports:
 tasks:
   - name: Start Docker Compose
     init: |
+      # Install Task CLI for easy project automation
+      curl -sSL https://taskfile.dev/install.sh | sh
+      sudo mv ./bin/task /usr/local/bin/
+
       echo "📦 Installing backend deps..."
       cd backend && poetry install --no-root
 
@@ -41,6 +45,7 @@ vscode:
     - msjsdiag.vscode-react-native
     - esbenp.prettier-vscode
     - dbaeumer.vscode-eslint
+    - go-task.go-task
 
 github:
   prebuilds:

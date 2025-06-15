@@ -1,28 +1,29 @@
-"use client";
-import React from "react";
-import { QueryClient, QueryClientProvider, useQuery } from "@tanstack/react-query";
-import axios from "axios";
-import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input";
-import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/Card";
+'use client';
+import React from 'react';
+import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query';
+import axios from 'axios';
+import { Button } from '@/components/ui/Button';
+import { Input } from '@/components/ui/Input';
+import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/components/ui/Card';
 
 const queryClient = new QueryClient();
 
 function HelloMessage() {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL || "";
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL || '';
   const { data, error, isLoading } = useQuery({
-    queryKey: ["hello-message"],
+    queryKey: ['hello-message'],
     queryFn: async () => {
-      if (!apiUrl) throw new Error("NEXT_PUBLIC_API_URL not set");
+      if (!apiUrl) throw new Error('NEXT_PUBLIC_API_URL not set');
       const res = await axios.get(`${apiUrl}/api/hello`);
       return res.data.message || JSON.stringify(res.data);
     },
     retry: false,
   });
 
-  let backendMessage = "(no backend response)";
-  if (isLoading) backendMessage = "Loading...";
-  else if (error) backendMessage = error instanceof Error ? error.message : "Failed to fetch from backend.";
+  let backendMessage = '(no backend response)';
+  if (isLoading) backendMessage = 'Loading...';
+  else if (error)
+    backendMessage = error instanceof Error ? error.message : 'Failed to fetch from backend.';
   else if (data) backendMessage = data;
 
   return (

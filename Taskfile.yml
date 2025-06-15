@@ -1,0 +1,14 @@
+version: '3'
+tasks:
+  ps:
+    desc: List all Docker containers (including stopped)
+    cmds:
+      - docker ps -a
+  logs:
+    desc: Show logs for all running Docker containers
+    cmds:
+      - docker ps -q | xargs -r -I {} sh -c 'echo "=== Logs for container {} ===" && docker logs {}'
+  logs-follow:
+    desc: Follow logs for all running Docker containers
+    cmds:
+      - docker compose logs -f

@@ -20,7 +20,7 @@ export function useApi<T>() {
   });
 
   const fetchData = useCallback(async (url: string, options: ApiOptions = {}) => {
-    setState(prev => ({ ...prev, loading: true, error: null }));
+    setState((prev) => ({ ...prev, loading: true, error: null }));
 
     try {
       const response = await fetch(url, {
@@ -50,4 +50,4 @@ export function useApi<T>() {
     ...state,
     fetchData,
   };
-} 
+}
