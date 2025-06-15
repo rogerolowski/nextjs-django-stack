@@ -37,6 +37,22 @@ SECRET_KEY = config('DJANGO_SECRET_KEY', default='your-secret-key-here')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
+# --- CORS SETTINGS ---
+CORS_ALLOW_ALL_ORIGINS = True  # For development only! Restrict in production.
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+]
+
+# Add Gitpod workspace URL if present
+GITPOD_WORKSPACE_URL = os.environ.get("GITPOD_WORKSPACE_URL")
+if GITPOD_WORKSPACE_URL:
+    # Convert https://3000-someid.ws-eu.gitpod.io to https://3000-someid.ws-eu.gitpod.io
+    CORS_ALLOWED_ORIGINS.append(GITPOD_WORKSPACE_URL)
+
+
+# --- Trailing slash behavior ---
+APPEND_SLASH = False  # Avoid 301 redirects for no-slash URLs
+
 # Application definition
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',  # default
