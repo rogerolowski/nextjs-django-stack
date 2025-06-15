@@ -10,7 +10,7 @@ ALLOWED_HOSTS = [
     os.environ.get("GITPOD_HOST", "")
 ]
 
-# Optionally set CSRF_TRUSTED_ORIGINS for Gitpod
+# --- Gitpod & CSRF/CORS settings ---
 GITPOD_WORKSPACE_URL = os.environ.get("GITPOD_WORKSPACE_URL")
 if GITPOD_WORKSPACE_URL:
     GITPOD_HOST = GITPOD_WORKSPACE_URL.replace("https://", "")
@@ -37,16 +37,16 @@ SECRET_KEY = config('DJANGO_SECRET_KEY', default='your-secret-key-here')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
+# Disable SSL redirect in development
+if DEBUG:
+    SECURE_SSL_REDIRECT = False
+
 # --- CORS SETTINGS ---
 CORS_ALLOW_ALL_ORIGINS = True  # For development only! Restrict in production.
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
 ]
-
-# Add Gitpod workspace URL if present
-GITPOD_WORKSPACE_URL = os.environ.get("GITPOD_WORKSPACE_URL")
 if GITPOD_WORKSPACE_URL:
-    # Convert https://3000-someid.ws-eu.gitpod.io to https://3000-someid.ws-eu.gitpod.io
     CORS_ALLOWED_ORIGINS.append(GITPOD_WORKSPACE_URL)
 
 
