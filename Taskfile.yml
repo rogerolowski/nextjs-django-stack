@@ -12,3 +12,13 @@ tasks:
     desc: Follow logs for all running Docker containers
     cmds:
       - docker compose logs -f
+
+  frontend-logs:
+    desc: Show logs for the frontend container
+    cmds:
+      - docker compose logs frontend
+
+  backend-logs:
+    desc: Show logs for the backend container
+    cmds:
+      - docker compose logs backend
